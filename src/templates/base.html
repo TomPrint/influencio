@@ -1,0 +1,60 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pl">
+
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="Influencio - Świat Influencerów">
+    <meta name="keywords" content="influencer, moda, fitness, gaming, prank, lifestyle">
+    <meta name="author" content="Jakub Klewicki & Tomasz Klewicki">
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="{% static '#' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" defer></script>
+
+    <!-- Custom js & css -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+
+
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+    <title>Influencio | {% block title %} {{title}} {% endblock title %}</title>
+  </head>
+
+  <body>
+
+
+  {% include 'navbar.html' %}
+
+{% block content %}
+
+{% endblock content %}
+
+
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
+    
+  </body>
+
+<footer>
+  
+  {% include 'footer.html' %}
+
+</footer>
+  
+</html>
