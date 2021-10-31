@@ -2,9 +2,10 @@ from django.urls import path
 from . import views
 from influencio_app import settings
 from django.conf.urls.static import static
+from .views import MoviesView
 
 urlpatterns = [
-    path('', views.home, name='page-home'),
+    path('', MoviesView.as_view(), name='page-home'),
     
 ]
 

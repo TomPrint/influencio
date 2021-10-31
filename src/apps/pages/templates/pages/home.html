@@ -1,6 +1,43 @@
 {% extends "base.html" %}
 {% block content%}
 
-<img class="d-block w-100" src="/media/influencio.png" alt="influencio-logo">
+<div container>
+    <div class="row">
+        {% for movie in object_list %}
+        <div class="col-lg-5 mb-1 d-flex align-items-stretch">
+            <div class="card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><a>{{ movie.author}} - {{ movie.title }}</a></h5>
+                    <details>
+                    <summary style="color:blue; filter: saturate(50%);">Kliknij aby otworzyć wideo</summary>
+                    <p class="card-text mb-4 pagetext">{{movie.content | safe }}</p>
+                    </details>
+                    <div class="row">
+                        <div class="col">
+                                <medium><b> Autor: {{movie.author}}</b></medium>
+                                <p style="color:green"><b> Kategoria: {{ movie.category }}</b></p>
+                                <p style="color:grey"><b> Data dodania: {{ movie.date_posted }}</b></p>
+                                {% if movie.tiktok_url|length > 0  %}
+                                    <p style="color:grey"> TIKTOK: 
+                                    <a href ="{{ movie.tiktok_url }}">{{movie.tiktok_url}}</a></p>
+                                {% endif %}
+                                {% if movie.youtube_url|length > 0 %}
+                                    <p style="color:grey"> YT: 
+                                    <a href ="{{ movie.youtube_url }}">{{movie.youtube_url}}</a></p>
+                                {% endif %}    
+                                {% if movie.insta_url|length > 0 %}
+                                    <p style="color:grey"> INSTA: 
+                                    <a href ="{{ movie.insta_url }}">{{movie.insta_url}}</a></p>
+                                {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
 
 {% endblock content%}
