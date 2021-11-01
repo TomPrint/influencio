@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 {% block content%}
+{% load crispy_forms_tags%}
+
+<div class="col-sm-5">
+    <form action="" method="get" autocomplete="off">
+        {{ filter.form|crispy }}
+        <p></p><button class="btn btn-success" type="submit">Szukaj</button>
+        <a class="btn btn-warning" href="{% url 'page-home' %}">Wyczyść filtr</a>
+    </form>
+    <br>
+</div>
 
 <div container>
     <div class="row">
         {% for movie in object_list %}
-        <div class="col-lg-5 mb-1 d-flex align-items-stretch">
+        <div class="col-lg-3 mb-1 d-flex align-items-stretch">
             <div class="card">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><a>{{ movie.author}} - {{ movie.title }}</a></h5>
@@ -14,20 +24,20 @@
                     </details>
                     <div class="row">
                         <div class="col">
-                                <medium><b> Autor: {{movie.author}}</b></medium>
+                                <medium><b> Influencer: {{movie.author}}</b></medium>
                                 <p style="color:green"><b> Kategoria: {{ movie.category }}</b></p>
                                 <p style="color:grey"><b> Data dodania: {{ movie.date_posted }}</b></p>
                                 {% if movie.tiktok_url|length > 0  %}
-                                    <p style="color:grey"> TIKTOK: 
-                                    <a href ="{{ movie.tiktok_url }}">{{movie.tiktok_url}}</a></p>
+                                    <img src='static/tik-tok-logo.png' alt="Tik-Tok logo" width="40" height="40">   
+                                    <a style="font-size: 12px;" href="{{ movie.tiktok_url }}">{{movie.tiktok_url}}</a></p>
                                 {% endif %}
                                 {% if movie.youtube_url|length > 0 %}
-                                    <p style="color:grey"> YT: 
-                                    <a href ="{{ movie.youtube_url }}">{{movie.youtube_url}}</a></p>
+                                     <img src='static/youtube-logo.png' alt="You Tube logo" width="40" height="40">
+                                    <a style="font-size: 12px;" href ="{{ movie.youtube_url }}">{{movie.youtube_url}}</a></p>
                                 {% endif %}    
                                 {% if movie.insta_url|length > 0 %}
-                                    <p style="color:grey"> INSTA: 
-                                    <a href ="{{ movie.insta_url }}">{{movie.insta_url}}</a></p>
+                                    <img src='static/instagram-logo.png' alt="Instagram logo" width="40" height="40">
+                                    <a style="font-size: 12px;" href ="{{ movie.insta_url }}">{{movie.insta_url}}</a></p>
                                 {% endif %}
 
                         </div>
