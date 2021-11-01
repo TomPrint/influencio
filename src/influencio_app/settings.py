@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #local custom location apps
     'apps.pages',
     'apps.users',
+    'crispy_forms', 
 ]
 
 MIDDLEWARE = [
