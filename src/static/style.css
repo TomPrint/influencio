@@ -1,4 +1,6 @@
 
+/* ----- NAVBAR STYLING ----- */
+
 /* Google Fonts Link*/
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -39,7 +41,7 @@ nav .navbar .logo a {
 
 nav .navbar .nav-links{
     background: rgb(3, 3, 3);
-    height: 100%
+    height: 100%;
     line-height:70px;
 }
 
@@ -122,10 +124,12 @@ transition: all 0.3s ease;
 
 
 
+/* ----- BODY STYLING----- */
 
 
-
-body { padding-top: 220px; }
+body {
+    padding-top: 220px;
+}
 
 
 .card {
@@ -133,4 +137,5 @@ body { padding-top: 220px; }
     border-radius: 30px;
     border: solid 2px rgb(148, 170, 24);
     margin: 2px;
+    display:flex;
 }
