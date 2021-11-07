@@ -26,7 +26,6 @@ class MoviesView (AdminStaffRequiredMixin, FilterView):
 
 
 
-
 # def home(request):
 
 #     context = {
