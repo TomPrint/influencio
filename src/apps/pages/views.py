@@ -18,6 +18,7 @@ class MoviesView (AdminStaffRequiredMixin, FilterView):
     model=Movie
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
+    paginate_by =  3
 
     def get_queryset(self):
       qs = self.model.objects.all()
