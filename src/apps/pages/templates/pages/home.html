@@ -2,7 +2,7 @@
 {% block content%}
 {% load crispy_forms_tags%}
 
-
+{% comment %} Wyświetlenie paska do filtrowania wyników {% endcomment %}
 <div class="col-sm-5">
     <form action="" method="get" autocomplete="off">
         {{ filter.form|crispy }}
@@ -11,7 +11,27 @@
     </form>
     <br>
 </div>
+{% comment %} pagination {% endcomment %}
 
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">Pierwsza</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Poprzednia</a>
+        {% endif %}
+
+        <span class="current">
+            Strona {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Następna</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Ostatnia</a>
+        {% endif %}
+    </span>
+</div>
+<br>
+{% comment %} Show Influencers from model {% endcomment %}
 <div container>
     <div class="row">
         {% for movie in object_list %}
