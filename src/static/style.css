@@ -4,44 +4,111 @@
 /* Google Fonts Link*/
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
+
+
 .navbar-brand {
     font-family: 'Architects Daughter', cursive;
     font-size: 35px;  
 }
 
 .navbar-custom {
-    background-color: #181717;
+background-color: #160b11;
+background-image: linear-gradient(225deg, #383a38 0%, #3a3a38 50%, #000000 100%);
+
 }
 
 .color-text{
-    color: rgb(157, 236, 11);
+    background: -webkit-linear-gradient(rgb(250, 6, 6), #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;  
 }
 
-.bx-menu {
-    color:rgb(157, 236, 11);    
-}
-
-.nav-link{
-    color:rgb(157, 236, 11);
-    font-size: 15px;
-}
-
-.navbar-nav .nav-item:hover .nav-link {
+.color-text:hover {
     color: rgb(244, 245, 241);
 }
 
-.navbar-nav .nav-item:hover .nav-link:hover{
-    box-shadow: 0px 2px 0px rgb(66, 165, 9);
+.bx-menu {
+    color:rgb(236, 221, 11);
+    background: -webkit-linear-gradient(rgb(231, 235, 31), rgb(116, 124, 7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 38px;
+       
+}
+
+.nav-link{
+    color:rgb(231, 235, 31);
+    font-size: 16px;
+    font-family: 'Architects Daughter', cursive;
+    
 }
 
 
+.navbar-nav .nav-item:hover .nav-link {
+    color: rgb(244, 245, 241);
+    
+}
+
+.navbar-nav .nav-item:hover .nav-neon1:hover{
+    box-shadow: 0px 2px 0px rgb(66, 165, 9);
+}
+
+.navbar-nav .nav-item:hover .nav-neon2:hover{
+    box-shadow: 0px 2px 0px rgb(211, 214, 7);
+}
+
+.navbar-nav .nav-item:hover .nav-neon3:hover{
+    box-shadow: 0px 2px 0px rgb(204, 119, 8);
+}
+
+.navbar-nav .nav-item:hover .nav-neon4:hover{
+    box-shadow: 0px 2px 0px rgb(181, 127, 192);
+}
+
+.navbar-nav .nav-item:hover .nav-neon5:hover{
+    box-shadow: 0px 2px 0px rgb(9, 131, 168);
+}
+
+.navbar-nav .nav-item:hover .nav-neon6:hover{
+    box-shadow: 0px 2px 0px rgb(190, 32, 58);
+}
+
+.navbar-nav .nav-item:hover .nav-neon7:hover{
+    box-shadow: 0px 2px 0px rgb(123, 136, 3);
+}
+
+.navbar-nav .nav-item:hover .nav-neon8:hover{
+    box-shadow: 0px 2px 0px rgb(187, 49, 230);
+}
+
+.navbar-nav .nav-item:hover .nav-neon9:hover{
+    box-shadow: 0px 2px 0px rgb(27, 146, 96);
+}
+
+/* Downsizing Navbar */
+@media (max-width: 1153px) {
+
+    .color-text {
+        font-size: 35px;   
+    }
+    .nav-link{
+        font-size:13px;
+    }
+}
+
 /* ----- BODY STYLING ----- */
 
-/* body {
-    max-width: 1250px;
-    padding-top: 160px;
-    padding-left:2%;
-} */
+body{
+    background-color: #c5c3c9;
+    }
+    
+
+section{
+    text-decoration: none;
+    padding-left: 30px;
+    padding-right: 10px;
+}
 
 
 .card {
