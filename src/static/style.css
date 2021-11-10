@@ -195,3 +195,9 @@ section{
   padding: 5px;
 }
 
+
+/* ----- FOOTER ----- */
+
+
+
+.tm-footer-links > li { margin-bottom: 10px; }
