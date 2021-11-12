@@ -1,7 +1,8 @@
 {% load static %}
+{% load crispy_forms_tags%}
 <div class="logo">
  <img class="img-fluid" src='media/pxl-nav-3.jpg'>
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-custom navbar-expand-custom" id="navbar">
         <a class="navbar-brand color-text" href="#">Influencio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +57,21 @@
                     <a class="nav-link nav-neon9" href="#">KONTAKT</a>
                 </li> -->
 
+                <li class="nav-item">
+                    <i class='bx bx-search' ></i>
+                </li>
+                
+               <form class="form-inline" action="" method="get" autocomplete="off">
+                {{ filter.form|crispy }}
+                <button class="btn btn-light btn-sm" type="submit">Szukaj</button>
+                <a class="btn btn-warning btn-sm" href="{% url 'page-home' %}">Wyczyść filtr</a>
+                 </form>
+               
             </ul>
+            
+            
+           
+
         </div>
         
 

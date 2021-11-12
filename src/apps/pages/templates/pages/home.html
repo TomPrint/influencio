@@ -3,17 +3,21 @@
 {% load crispy_forms_tags%}
 {% load static %}
 
-{% comment %} Wyświetlenie paska do filtrowania wyników {% endcomment %}
-<div class=search-section>
+
+<!-- Wyszukiwanie/Filtrowanie przeniesione do NAVBARU -->
+<!-- {% comment %} Wyświetlenie paska do filtrowania wyników {% endcomment %}
+
+<div class="search-section">
 <div class="col-sm-5">
-    <form action="" method="get" autocomplete="off">
+    <form action="Szukaj" method="get" autocomplete="off" aria-placeholder="Szukaj">
         {{ filter.form|crispy }}
         <p></p><button class="btn btn-success" type="submit">Szukaj</button>
         <a class="btn btn-warning" href="{% url 'page-home' %}">Wyczyść filtr</a>
     </form>
     <br>
 </div>
-</div>
+</div> -->
+
 {% comment %} pagination {% endcomment %}
 
 <div class="pagination">
@@ -34,6 +38,7 @@
     </span>
 </div>
 <br>
+
 {% comment %} Show Influencers from model {% endcomment %}
 <div container>
     <div class="row">
