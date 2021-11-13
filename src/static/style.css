@@ -19,8 +19,6 @@
 
 .navbar-custom {
 background-color: #f3f2f2;
-border-bottom: 5px;
-border-bottom-style:inset
 }
 
 .color-text{
@@ -134,16 +132,9 @@ border-bottom-style:inset
     }
 }
 
-.sticky-top{
-position: fixed;
-    top: 5;
-    width: 100%;
-    z-index: 999;
-}
 
-.image-position{
-    margin-top:50px;
-}
+
+
 
 
 /* ----- BODY STYLING ----- */
