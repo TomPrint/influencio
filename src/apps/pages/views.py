@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from apps.pages.models import Movie
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .filters import MovieFilter
@@ -24,6 +24,18 @@ class MoviesView (AdminStaffRequiredMixin, FilterView):
       qs = self.model.objects.all()
       movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
       return movie_filtered_list.qs
+
+
+class HotTopView (AdminStaffRequiredMixin, ListView):
+    model=Movie
+    template_name = 'pages/hot.html'
+    filterset_class = MovieFilter
+    paginate_by = 10
+
+    
+    def get_queryset(self):
+        qs = self.model.objects.filter(category="HOT-TOP")
+        return qs
 
 
 
