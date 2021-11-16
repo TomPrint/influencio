@@ -26,7 +26,7 @@ class MoviesView (AdminStaffRequiredMixin, FilterView):
       return movie_filtered_list.qs
 
 
-class HotTopView (AdminStaffRequiredMixin, ListView):
+class HotTopView (AdminStaffRequiredMixin, FilterView):
     model=Movie
     template_name = 'pages/hot.html'
     filterset_class = MovieFilter
@@ -34,8 +34,8 @@ class HotTopView (AdminStaffRequiredMixin, ListView):
 
     
     def get_queryset(self):
-        qs = self.model.objects.filter(category="HOT-TOP")
-        return qs
+        category_qs= self.model.objects.filter(category="HOT-TOP")
+        return category_qs
 
 
 

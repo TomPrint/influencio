@@ -1,8 +1,7 @@
 {% load static %}
 {% load crispy_forms_tags%}
-<div class="logo">
- 
-    <nav class="navbar navbar-custom navbar-expand-custom" >
+
+    <nav class="navbar navbar-custom navbar-expand-custom sticky-top">
         <a class="navbar-brand color-text" href="{% url 'page-home' %}">Influencio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +35,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link nav-neon5" href="#">LIFESTYLE</a>    
+                    <a class="nav-link nav-neon5" href="#">LIFESTYLE</a>
                 </li>
 
 
@@ -48,8 +47,8 @@
                 <li class="nav-item">
                     <a class="nav-link  nav-neon7" href="#">SPORT</a>
                 </li>
-                
-               
+
+
                 <!-- <li class="nav-item">
                     <a class="nav-link nav-neon8" href="#">O NAS</a>
                 </li>
@@ -58,27 +57,25 @@
                 </li> -->
 
                 <li class="nav-item">
-                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-search'></i>
                 </li>
-                
-               <form class="form-inline" action="" method="get" autocomplete="off">
-                {{ filter.form|crispy }}
-                <button class="btn btn-light btn-sm" type="submit">Szukaj</button>
-                <a class="btn btn-warning btn-sm" href="{% url 'page-home' %}">Wyczyść filtr</a>
-                 </form>
-               
+
+                <form class="form-inline" action="" method="get" autocomplete="off">
+                    {{ filter.form|crispy }}
+                    <button class="btn btn-light btn-sm" type="submit">Szukaj</button>
+                    <a class="btn btn-warning btn-sm" href="{% url 'page-home' %}">Wyczyść filtr</a>
+                </form>
+
             </ul>
-            
-            
-           
+
+
+
 
         </div>
-        
 
-    </div>
-    <img class="img-fluid" src='media/pxl-nav-3.jpg'>
+
     </nav>
-</div>
-    <script type="text/javascript" src="{% static 'script.js' %}">
 
-    </script>
+<script type="text/javascript" src="{% static 'script.js' %}">
+
+</script>
