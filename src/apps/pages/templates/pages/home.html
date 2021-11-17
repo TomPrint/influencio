@@ -43,30 +43,57 @@
 <div container>
     <div class="row">
         {% for movie in object_list %}
-        <div class="col-lg-4 mb-2 d-flex align-items-stretch">
-            <div class="card">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title"><a><strong>{{ movie.author}}</strong> - {{ movie.title }}</a></h4>
-                    <p> {{movie.content | safe }}</p>
-                    <div class="row">
-                        <div class="col">
-                                <h6><strong> Kategoria: {{ movie.category }} </strong></h6>
-                                <p><small>Data dodania: {{ movie.date_posted }}</small></p>
-                                {% if movie.tiktok_url|length > 0  %}
-                                    <a href="{{ movie.tiktok_url }}"><img src='static/tik-tok-logo.png' alt="Tik-Tok logo" width="40" height="40"></a>   
-                                {% endif %}
-                                {% if movie.youtube_url|length > 0 %}
-                                     <a href ="{{ movie.youtube_url }}"> <img src='static/youtube-logo.png' alt="You Tube logo" width="40" height="40"></a>
-                                {% endif %}    
-                                {% if movie.insta_url|length > 0 %}
-                                    <a href ="{{ movie.insta_url }}"><img src='static/instagram-logo.png' alt="Instagram logo" width="40" height="40"></a>
-                                {% endif %}
-
-                        </div>
-                    </div>
+        <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card m-2">
+            <div class="card-body p-1">
+                <h5 class="card-title"><a><strong>{{ movie.author}}</strong></a></h5>
+                <h6 class="card-subtitle">{{ movie.title }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Kategoria: {{ movie.category }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"><small>Data dodania: {{ movie.date_posted }}</small></h6>
+                <div class="movie_container">
+                    <div class="movie_item">{{movie.content | safe }}</div>
                 </div>
+                <p class="card-text" style="fluid:center;"> 
+                {% if movie.tiktok_url|length > 0  %}
+                    <a href="{{ movie.tiktok_url }}"><img src='static/tik-tok-logo.png' alt="Tik-Tok logo" width="40" height="40"></a>   
+                {% endif %}
+                {% if movie.youtube_url|length > 0 %}
+                    <a href ="{{ movie.youtube_url }}"> <img src='static/youtube-logo.png' alt="You Tube logo" width="40" height="40"></a>
+                {% endif %}    
+                {% if movie.insta_url|length > 0 %}
+                    <a href ="{{ movie.insta_url }}"><img src='static/instagram-logo.png' alt="Instagram logo" width="40" height="40"></a>
+                {% endif %}
+                </p>
+            </div>
             </div>
         </div>
+        
+        
+        
+        
+        
+        
+        {% comment %} <div class="col-lg-4 mb-2 d-flex align-items-stretch">
+            <div class="card">
+                <h4 class="card-title"><a><strong>{{ movie.author}}</strong> - {{ movie.title }}</a></h4>
+                <div class="movie">
+                    {{movie.content | safe }}</p>
+                </div>
+                <div class="row">
+                    <h6><strong> Kategoria: {{ movie.category }} </strong></h6>
+                    <p><small>Data dodania: {{ movie.date_posted }}</small></p>
+                    {% if movie.tiktok_url|length > 0  %}
+                        <a href="{{ movie.tiktok_url }}"><img src='static/tik-tok-logo.png' alt="Tik-Tok logo" width="40" height="40"></a>   
+                    {% endif %}
+                    {% if movie.youtube_url|length > 0 %}
+                            <a href ="{{ movie.youtube_url }}"> <img src='static/youtube-logo.png' alt="You Tube logo" width="40" height="40"></a>
+                    {% endif %}    
+                    {% if movie.insta_url|length > 0 %}
+                        <a href ="{{ movie.insta_url }}"><img src='static/instagram-logo.png' alt="Instagram logo" width="40" height="40"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div> {% endcomment %}
         {%endfor%}
     </div>
 </div>
