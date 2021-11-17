@@ -144,23 +144,25 @@ body{
     background-color: #dcdcdc;
     font-family: 'Montserrat', sans-serif;
     }
-    
 
 section{
     text-decoration: none;
-    padding-left: 30px;
-    padding-right: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
+.card{
+    width: 350px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 0.5rem;
+}
 
-.card {
-  
-    border-radius: 4px;
-    border:flex;
-    border: solid 1px rgba(0, 0, 0, 0.295);
-    display:flex;
-    width:600px
-    
+.card-title{
+    display: inline-block;
+}
+.movie_cointainer{
+    overflow: hidden;
 }
 
 iframe.instagram-media {
@@ -168,8 +170,6 @@ iframe.instagram-media {
     width: 100% !important;
     min-width: auto !important;
 }
-
-
 
 /*  BACK TO THE TOP BUTTON */
 #button {
