@@ -31,6 +31,7 @@ class HotTopView (AdminStaffRequiredMixin, FilterView):
     template_name = 'pages/hot.html'
     filterset_class = MovieFilter
     paginate_by = 10
+    
 
     
     def get_queryset(self):
