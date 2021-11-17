@@ -152,20 +152,35 @@ section{
 }
 
 .card{
-    width: 350px;
+    width: 100%;
     justify-content: center;
     text-align: center;
     border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .card-title{
     display: inline-block;
 }
 .movie_cointainer{
-    overflow: hidden;
+    
 }
 
-iframe.instagram-media {
+.movie_cointainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* iframe.instagram-media {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: auto !important;
+} */
+
+iframe {
     max-width: 100% !important;
     width: 100% !important;
     min-width: auto !important;
