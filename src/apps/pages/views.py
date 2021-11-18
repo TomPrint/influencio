@@ -14,11 +14,11 @@ class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
 
-class MoviesView (AdminStaffRequiredMixin, FilterView):
+class MoviesView (FilterView):
     model=Movie
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
-    paginate_by = 10
+    paginate_by = 12
 
     def get_queryset(self):
       qs = self.model.objects.all()
@@ -26,13 +26,11 @@ class MoviesView (AdminStaffRequiredMixin, FilterView):
       return movie_filtered_list.qs
 
 
-class HotTopView (AdminStaffRequiredMixin, FilterView):
+class HotTopView (FilterView):
     model=Movie
     template_name = 'pages/hot.html'
     filterset_class = MovieFilter
-    paginate_by = 10
-    
-
+    paginate_by = 8
     
     def get_queryset(self):
         category_qs= self.model.objects.filter(category="HOT-TOP")
