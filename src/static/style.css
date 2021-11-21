@@ -157,28 +157,23 @@ section{
     text-align: center;
     border-radius: 0.5rem;
     overflow: hidden;
+    padding: 1%;
+    margin: 1%;
+}
+._embed_video_left-wrapper new{
+    display:none !important;
 }
 
-.card-title{
-    display: inline-block;
-}
-.movie_cointainer{
-    
-}
-
-.movie_cointainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.promo_section{
+   display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center; 
 }
-
-/* iframe.instagram-media {
-    max-width: 100% !important;
-    width: 100% !important;
-    min-width: auto !important;
-} */
+.container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 iframe {
     max-width: 100% !important;

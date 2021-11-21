@@ -18,7 +18,7 @@ class MoviesView (FilterView):
     model=Movie
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
-    paginate_by = 12
+    paginate_by = 9
 
     def get_queryset(self):
       qs = self.model.objects.all()
@@ -30,7 +30,7 @@ class HotTopView (FilterView):
     model=Movie
     template_name = 'pages/hot.html'
     filterset_class = MovieFilter
-    paginate_by = 8
+    paginate_by = 6
     
     def get_queryset(self):
         category_qs= self.model.objects.filter(category="HOT-TOP")
