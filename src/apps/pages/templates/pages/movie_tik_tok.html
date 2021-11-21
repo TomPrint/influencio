@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body p-1">
+        <h5 class="card-title"><strong>{{ movie.author}}</strong></h5 <br>
+        <h5 class="card-subtitle">{{ movie.title }}</h5>
+        <br>
+        <h6 class="card-subtitle mb-2 text-muted">Kategoria: {{ movie.category }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted"><small>Data dodania: {{ movie.date_posted }}</small></h6>
+        <div class="movie_container">
+            <div class="movie_item">{{movie.content | safe }}</div>
+        </div>
+        <p class="card-text" style="fluid:center;"> Link do profilu:
+            {% if movie.tiktok_url|length > 0  %}
+            <a href="{{ movie.tiktok_url }}"><img src='/static/tik-tok-logo.png' alt="Tik-Tok logo" width="40"
+                    height="40"></a>
+            {% endif %}
+            {% if movie.youtube_url|length > 0 %}
+            <a href="{{ movie.youtube_url }}"> <img src='/static/youtube-logo.png' alt="You Tube logo" width="40"
+                    height="40"></a>
+            {% endif %}
+            {% if movie.insta_url|length > 0 %}
+            <a href="{{ movie.insta_url }}"><img src='/static/instagram-logo.png' alt="Instagram logo" width="40"
+                    height="40"></a>
+            {% endif %}
+        </p>
+    </div>
+</div>
