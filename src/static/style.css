@@ -151,6 +151,11 @@ section{
     padding-right: 6px;
 }
 
+
+.pagination{
+    margin: 1%;
+    font-size: 15px;
+}
 .card{
     width: 100%;
     justify-content: center;
@@ -165,9 +170,12 @@ section{
 }
 
 .promo_section{
-   display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    background-image: url('Hot_zone.png');
+    background-repeat: repeat;
+    background-color: rgba(255, 127, 80, 0.486);
 }
 .container-fluid {
     display: flex;
@@ -176,9 +184,9 @@ section{
 }
 
 iframe {
-    max-width: 100% !important;
+    /* max-width: 100% !important; */
     width: 100% !important;
-    min-width: auto !important;
+    /* min-width: auto !important; */
 }
 
 /*  BACK TO THE TOP BUTTON */
