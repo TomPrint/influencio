@@ -20,46 +20,27 @@
 
 {% comment %} pagination {% endcomment %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">Pierwsza</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Poprzednia</a>
-        {% endif %}
-
-        <span class="current">
-            Strona {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Następna</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Ostatnia</a>
-        {% endif %}
-    </span>
-</div>
-<br>
-
-
+ {% include "pages/pagination.html" %}
 
 {% comment %} Show Influencers from model {% endcomment %}
 
-<div class="promo_section" style="background-color: coral;">
+<div class="promo_section">
     <div class="row">
         {% for movie in object_list %}
-            {% if movie.promotion == True %}
-            <div class="col-lg-6 align-items-stretch">
+        {% if movie.promotion == True %}
+        <div class="col-lg-6 d-flex align-items-stretch">
             {% include "pages/movie.html" %}
-            </div>
-            {% endif %}
-        {% endfor %}   
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
-<br> 
+<br>
 
 <div>
     <div class="row">
         {% for movie in object_list %}
-            <div class="col-lg-4 d-flex align-items-stretch">
+        <div class="col-lg-4 d-flex align-items-stretch">
             {% if movie.source == "YouTube" %}
             {% include "pages/movie_you_tube.html" %}
             {% endif %}
@@ -75,10 +56,11 @@
             {% if movie.source == "Other" %}
             {% include "pages/movie.html" %}
             {% endif %}
-            </div>
+        </div>
         {%endfor%}
 
     </div>
 </div>
+{% include "pages/pagination.html" %}
 
 {% endblock content%}
