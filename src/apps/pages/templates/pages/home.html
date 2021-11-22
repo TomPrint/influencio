@@ -26,10 +26,10 @@
 
 <div class="promo_section">
     <div class="row">
-        {% for movie in object_list %}
-        {% if movie.promotion == True %}
+        {% for movie_promotion in movie_promotions %}
+        {% if movie_promotion.promotion == True %}
         <div class="col-lg-6 d-flex align-items-stretch">
-            {% include "pages/movie.html" %}
+            {% include "pages/movie_promotion.html" %}
         </div>
         {% endif %}
         {% endfor %}

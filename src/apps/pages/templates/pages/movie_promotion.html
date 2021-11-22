@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-body p-1">
+        <h5 class="card-title"><strong>{{ movie_promotion.author}}</strong></h5 <br>
+        <h5 class="card-subtitle">{{ movie_promotion.title }}</h5>
+        <br>
+        <h6 class="card-subtitle mb-2 text-muted">Kategoria: {{ movie_promotion.category }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted"><small>Data dodania: {{ movie_promotion.date_posted }}</small></h6>
+        <div class="movie_container">
+            <div class="movie_item">{{movie_promotion.content | safe }}</div>
+        </div>
+    </div>
+</div>
