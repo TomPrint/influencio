@@ -8,42 +8,39 @@ from .filters import MovieFilter
 
 # Create your views here.
 
-
+# Admin Staff Mixin
 class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
-
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
 
 class MoviesView (FilterView):
-    model=Movie
+    model = Movie
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
-    paginate_by = 10
-
+    paginate_by = 6
+    ordering = ['-date_created']
+ 
+# query_set for dajango-filter
     def get_queryset(self):
-      qs = self.model.objects.all()
-      movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
-      return movie_filtered_list.qs
+        qs = self.model.objects.all()
+        movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
+        return movie_filtered_list.qs
+
+#pass new query_set to template to work with promotion zone apart from paginator and search field(django-filter)
+    def get_context_data(self, **kwargs):
+        context = super(MoviesView, self).get_context_data(**kwargs)
+        context['movie_promotions'] = Movie.objects.all()
+        return context
 
 
 class HotTopView (FilterView):
-    model=Movie
+    model = Movie
     template_name = 'pages/hot.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
+
     def get_queryset(self):
-        category_qs= self.model.objects.filter(category="HOT-TOP")
+        category_qs = self.model.objects.filter(category="HOT-TOP")
         return category_qs
 
-
-
-# def home(request):
-
-#     context = {
-      
-#         'title':'Strona główna',
-#       }
-
-#     return render (request,'pages/home.html', context)
 

@@ -8,7 +8,7 @@ category_choices = (
     ('GAMING', 'GAMING'), ('LIFESTYLE', 'LIFESTYLE'), ('SZTUKA', 'SZTUKA'), ('SPORT','SPORT'),)
 
 source_choices = (
-    ('YouTube', 'YouTube'), ('TikTok', 'TikTok'), ('Instagram','Instagram'), ('Other', 'Other'), ('Promo', 'Promo'),)
+    ('YouTube', 'YouTube'), ('TikTok', 'TikTok'), ('Instagram','Instagram'), ('Other', 'Other'),)
 # Create your models here.
 
 class Movie (models.Model):
@@ -22,7 +22,7 @@ class Movie (models.Model):
     youtube_url = models.URLField(blank=True, max_length=300)
     tiktok_url = models.URLField(blank=True, max_length=300)
     insta_url = models.URLField(blank=True, max_length=300)
-    
+
 
     class Meta:
         verbose_name = ("Movie")
