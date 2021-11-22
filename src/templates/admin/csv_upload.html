@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<h3> Wgraj Plik CSV </h3>
+<div>
+    <form action = "." method ="POST" enctype="multipart/form-data">
+        {{ form.as_p }}
+        {% csrf_token %}
+            <button type="submit">Wgraj Plik CSV</button>
+    </form>
+</div>
+
+{% endblock content %}

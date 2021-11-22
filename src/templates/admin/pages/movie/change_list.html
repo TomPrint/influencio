@@ -1,0 +1,17 @@
+{% extends "admin/change_list.html" %}
+<!-- overrides admin page -->
+{% load static %}
+{% block content %}
+
+<a href="upload-csv/">
+<input type="button" value="Wgraj Dane z Pliku CSV" <a href="upload-csv/">
+</a>
+
+<br>
+<br>
+
+{{ block.super }}
+<!-- getting all the info from the parent template -->
+
+{% endblock content%}
+
