@@ -4,26 +4,13 @@
 {% load static %}
 
 
-<!-- Wyszukiwanie/Filtrowanie przeniesione do NAVBARU -->
-<!-- {% comment %} Wyświetlenie paska do filtrowania wyników {% endcomment %}
 
-<div class="search-section">
-<div class="col-sm-5">
-    <form action="Szukaj" method="get" autocomplete="off" aria-placeholder="Szukaj">
-        {{ filter.form|crispy }}
-        <p></p><button class="btn btn-success" type="submit">Szukaj</button>
-        <a class="btn btn-warning" href="{% url 'page-home' %}">Wyczyść filtr</a>
-    </form>
-    <br>
-</div>
-</div> -->
-
-{% comment %} pagination {% endcomment %}
-
+{# site pagination import #}
  {% include "pages/pagination.html" %}
 
-{% comment %} Show Influencers from model {% endcomment %}
+{# Show Influencers movies from model #}
 
+{# Show movies checked as promotion movies #}
 <div class="promo_section">
     <div class="row">
         {% for movie_promotion in movie_promotions %}
@@ -35,8 +22,8 @@
         {% endfor %}
     </div>
 </div>
-<br>
-
+<p></p>
+{# Show all movies #}
 <div>
     <div class="row">
         {% for movie in object_list %}
@@ -61,6 +48,7 @@
 
     </div>
 </div>
+{# site pagination import #}
 {% include "pages/pagination.html" %}
 
 {% endblock content%}
