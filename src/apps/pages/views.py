@@ -18,13 +18,12 @@ class MoviesView (FilterView):
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    ordering = ['-date_created']
  
 # query_set for dajango-filter
     def get_queryset(self):
         qs = self.model.objects.all()
         movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
-        return movie_filtered_list.qs
+        return movie_filtered_list.qs.order_by('-date_posted')
 
 #pass new query_set to template to work with promotion zone apart from paginator and search field(django-filter)
     def get_context_data(self, **kwargs):
@@ -35,12 +34,34 @@ class MoviesView (FilterView):
 
 class HotTopView (FilterView):
     model = Movie
-    template_name = 'pages/hot.html'
+    template_name = 'pages/hot_top.html'
     filterset_class = MovieFilter
+    
     paginate_by = 6
 
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="HOT-TOP")
         return category_qs
 
+class OdkryciaView (FilterView):
+    model = Movie
+    template_name = 'pages/odkrycia.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+
+
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="ODKRYCIA")
+        return category_qs
+
+class BeautyView (FilterView):
+    model = Movie
+    template_name = 'pages/beauty.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+    
+
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="BEAUTY")
+        return category_qs
 
