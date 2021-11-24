@@ -1,11 +1,13 @@
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.contrib.admin.decorators import action
 from django.http.response import HttpResponse
 from django.urls import path
 from django.shortcuts import render
 from django import forms
-
+from django.utils.translation import ngettext
 from .models import Movie
 import csv
+
 
 class ImportCsvForm(forms.Form):
     list_display = forms.FileField()
@@ -17,6 +19,8 @@ class MovieAdmin(admin.ModelAdmin):
     list_filter = ('author', 'title', )
     #admin search
     search_fields = ['author', 'title',]
+    #action 
+    actions=['make_promotion', 'cancel_promotion',]
 
     #urls for CSV dupload & download
     def get_urls(self):
@@ -63,8 +67,23 @@ class MovieAdmin(admin.ModelAdmin):
         data = {"form": form}
         return render(request, 'admin/csv_upload.html', data)
 
+    @admin.action(description='Dodaj do promowanych')
+    def make_promotion(self, request, queryset):
+         updated = queryset.update(promotion=True)
+         self.message_user(request, ngettext(
+            '%d Wybrany film został dodany do promowanych',
+            '%d Wybrane filmy zostały dodane do promowanych.',
+            updated,
+        ) % updated, messages.SUCCESS)
 
-
+    @admin.action(description='Usuń z promowanych')
+    def cancel_promotion(self, request, queryset):
+        updated = queryset.update(promotion=False)
+        self.message_user(request, ngettext(
+            '%d Wybrany film został usunięty z promowanych',
+            '%d Wybrane filmy zostały usunięte z promowanych.',
+            updated,
+        ) % updated, messages.SUCCESS)
 
 
 # Register your models here.
