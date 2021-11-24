@@ -169,10 +169,9 @@ section{
     display:none !important;
 }
 
-.promo_section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container-bg{
+    /* align-items: center;
+    justify-content: center; */
     background-image: url('Hot_zone.png');
     background-repeat: repeat;
     background-color: rgba(255, 127, 80, 0.486);

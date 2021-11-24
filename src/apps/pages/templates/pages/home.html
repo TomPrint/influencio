@@ -11,17 +11,18 @@
 {# Show Influencers movies from model #}
 
 {# Show movies checked as promotion movies #}
-<div class="promo_section">
-    <div class="row">
-        {% for movie_promotion in movie_promotions %}
-        {% if movie_promotion.promotion == True %}
-        <div class="col-lg-6 d-flex align-items-stretch">
-            {% include "pages/movie_promotion.html" %}
+<div class="container-bg"
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for movie_promotion in movie_promotions %}
+            {% if movie_promotion.promotion == True %}
+            <div class="col-lg-5 d-flex align-items-stretch">
+                {% include "pages/movie_promotion.html" %}
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
-        {% endif %}
-        {% endfor %}
     </div>
-</div>
 <p></p>
 {# Show all movies #}
 <div>

@@ -31,37 +31,36 @@ class MoviesView (FilterView):
         context['movie_promotions'] = Movie.objects.all()
         return context
 
-
+#Hot-Top View
 class HotTopView (FilterView):
     model = Movie
     template_name = 'pages/hot_top.html'
-    filterset_class = MovieFilter
-    
+    filterset_class = MovieFilter 
     paginate_by = 6
 
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="HOT-TOP")
-        return category_qs
+        return category_qs.order_by('-date_posted')
 
+#Odkrycia View
 class OdkryciaView (FilterView):
     model = Movie
     template_name = 'pages/odkrycia.html'
     filterset_class = MovieFilter
     paginate_by = 6
 
-
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="ODKRYCIA")
-        return category_qs
+        return category_qs.order_by('-date_posted')
 
+#Beauty View
 class BeautyView (FilterView):
     model = Movie
     template_name = 'pages/beauty.html'
     filterset_class = MovieFilter
     paginate_by = 6
     
-
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="BEAUTY")
-        return category_qs
+        return category_qs.order_by('-date_posted')
 
