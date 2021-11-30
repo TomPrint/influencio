@@ -29,6 +29,7 @@ class MoviesView (FilterView):
     def get_context_data(self, **kwargs):
         context = super(MoviesView, self).get_context_data(**kwargs)
         context['movie_promotions'] = Movie.objects.all()
+        context['submitButton'] = 'Szukaj'
         return context
 
 #Hot-Top View
@@ -41,6 +42,11 @@ class HotTopView (FilterView):
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="HOT-TOP")
         return category_qs.order_by('-date_posted')
+    
+    def get_context_data(self, **kwargs):
+        context = super(HotTopView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Hot-Top'
+        return context
 
 #Odkrycia View
 class OdkryciaView (FilterView):
@@ -52,6 +58,11 @@ class OdkryciaView (FilterView):
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="ODKRYCIA")
         return category_qs.order_by('-date_posted')
+    
+    def get_context_data(self, **kwargs):
+        context = super(OdkryciaView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Odkrycia'
+        return context
 
 #Beauty View
 class BeautyView (FilterView):
@@ -64,3 +75,71 @@ class BeautyView (FilterView):
         category_qs = self.model.objects.filter(category="BEAUTY")
         return category_qs.order_by('-date_posted')
 
+    def get_context_data(self, **kwargs):
+        context = super(BeautyView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Beauty'
+        return context
+
+#Funny View
+class FunnyView (FilterView):
+    model = Movie
+    template_name = 'pages/funny.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+    
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="ŚMIESZNE")
+        return category_qs.order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super(FunnyView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Śmieszne'
+        return context
+        
+#Gamming View
+class GamingView (FilterView):
+    model = Movie
+    template_name = 'pages/lifestyle.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+    
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="LIFESTYLE")
+        return category_qs.order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super(GamingView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Gaming'
+        return context
+
+#Lifestyle View
+class LifestyleView (FilterView):
+    model = Movie
+    template_name = 'pages/lifestyle.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+    
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="LIFESTYLE")
+        return category_qs.order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super(LifestyleView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Lifestyle'
+        return context
+
+#Sport View
+class SportView (FilterView):
+    model = Movie
+    template_name = 'pages/sport.html'
+    filterset_class = MovieFilter
+    paginate_by = 6
+    
+    def get_queryset(self):
+        category_qs = self.model.objects.filter(category="SPORT")
+        return category_qs.order_by('-date_posted')
+
+    def get_context_data(self, **kwargs):
+        context = super(SportView, self).get_context_data(**kwargs)
+        context['submitButton'] = 'Szukaj w Sport'
+        return context
