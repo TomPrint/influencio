@@ -3,15 +3,12 @@
 {% load crispy_forms_tags%}
 {% load static %}
 
-
-
-
 {# Show Influencers movies from model #}
 
-{# Show movies checked as promotion movies #}
-<br>
-<div class="container-bg"
-    <div class="container">
+{# Show movies checked as PROMOTION movies - use one or two movies from the same chanell #}
+<p></p>
+<div class="container-bg" title ='Sekcja promocji wideo wybranych influencerów'>
+    <div class="container-md">
         <div class="row justify-content-center">
             {% for movie_promotion in movie_promotions %}
             {% if movie_promotion.promotion == True %}
@@ -22,11 +19,13 @@
             {% endfor %}
         </div>
     </div>
+</div>
 <p></p>
+
 {# site pagination import #}
 {% include "pages/pagination.html" %}
 
-{# Show all movies #}
+{# Show all movies / show movies from main-navbar views #}
 <div>
     <div class="row">
         {% for movie in object_list %}
