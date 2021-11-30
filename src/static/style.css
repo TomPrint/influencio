@@ -63,17 +63,17 @@ background-color: #3fbd78;
 
 /* Downsizing Navbar */
 
-/* @media (max-width: 1153px) {
+@media (max-width: 1320px) {
 
     .color-text {
-        font-size: 35px;   
+        font-size: 30px;   
     }
     .nav-link{
         font-size:13px;
     }
-} */
+}
 
-@media (min-width: 1460px){
+@media (min-width: 1188px){
     .navbar-expand-custom {
         flex-direction: row;
         flex-wrap: nowrap;
