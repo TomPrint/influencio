@@ -13,6 +13,8 @@ class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
 
+##################### CLASS - BASED VIEWS #####################
+
 #Home View - all movies without category filter
 class MoviesView (FilterView):
     model = Movie
@@ -158,3 +160,11 @@ class SportView (FilterView):
         context = super(SportView, self).get_context_data(**kwargs)
         context['submitButton'] = 'Szukaj w Sport'
         return context
+
+##################### FUNCTION VIEWS #####################
+
+def contact(request):
+        context = {
+            
+      }
+        return render (request,'pages/contact.html', context)
