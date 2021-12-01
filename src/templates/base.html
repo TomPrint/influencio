@@ -34,14 +34,9 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
 
-
-
-
   <!-- Custom js & css -->
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <script src="{% static 'static/script.js' %}"></script>
-
-
 
   {% block scripts %}
 
@@ -57,19 +52,19 @@
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
 <body>
-
+  <!--Main Top Side Banner-->
   <img src="/media/pxl-nav.jpg" class="img-fluid" alt="Baner influencio przedstawiający aparat na zielonym tle">
 
+  <!--Navbar-->
   {% block navbar %}
 
   {% include 'navbar.html' %}
 
   {% endblock %}
 
+  <!--Main Site Section-->
   <section>
     {% block content %}
-
-
 
     {% endblock content %}
   </section>
@@ -90,8 +85,7 @@
 
   </script>
 
-
-
+  <!-- Footer -->
   <footer>
 
     {% include 'footer.html' %}
