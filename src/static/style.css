@@ -108,6 +108,7 @@
 body {
     background-color: #e7e5e5a1;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 section {
