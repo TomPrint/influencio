@@ -13,7 +13,7 @@ import csv
 
 
 class ImportCsvForm(forms.Form):
-    list_display = forms.FileField()
+    csv_upload = forms.FileField()
 
 
 class MovieAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ class MovieAdmin(admin.ModelAdmin):
     #action 
     actions=['make_promotion', 'cancel_promotion',]
 
-    #urls for CSV dupload & download
+    #urls for CSV upload & download
     def get_urls(self):
         urls = super().get_urls()
         new_urls = [
@@ -37,7 +37,7 @@ class MovieAdmin(admin.ModelAdmin):
 
     #CSV Querry
     def export(self, request):
-        if request.user.is_staff:
+        if request.user.is_superuser:
 
             response = HttpResponse(content_type='text/csv')
             writer = csv.writer(response)
@@ -55,7 +55,7 @@ class MovieAdmin(admin.ModelAdmin):
 
     #views for CSV download page  
     def download_csv(self, request):
-        if request.user.is_authenticated:
+        if request.user.is_superuser:
             return render(request, 'admin/csv_download.html')
         else:
             return redirect('page-home')
@@ -63,7 +63,7 @@ class MovieAdmin(admin.ModelAdmin):
 
     #views for CSV upload page
     def upload_csv(self, request):
-        if request.user.is_authenticated:
+        if request.user.is_superuser:
             if request.method == 'POST':
                 csv_file = request.FILES["csv_upload"]
 
@@ -71,15 +71,28 @@ class MovieAdmin(admin.ModelAdmin):
                 csv_data = file_data.split("\n")
             
                 for x in csv_data:
-                    fields = x.split(";")
-
+                    fields = x.split(",")
+                    if x:    
+                        #example file for uploads movies.txt, comma delimited
+                        Movie.objects.update_or_create(
+                                category = fields[0],
+                                source = fields[1],
+                                author = fields[2],
+                                title = fields[3],
+                                content = fields[4],
+                                youtube_url = fields[5],
+                                tiktok_url = fields[6],
+                                insta_url = fields[7],
+                        )               
 
             form = ImportCsvForm()
             data = {"form": form}
             return render(request, 'admin/csv_upload.html', data)
-
+        
         else:
             return redirect('page-home')
+
+
 
     @admin.action(description='Dodaj do promowanych')
     def make_promotion(self, request, queryset):
