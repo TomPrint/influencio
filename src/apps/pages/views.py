@@ -4,6 +4,8 @@ from django.views.generic import DetailView, CreateView, UpdateView, DeleteView,
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .filters import MovieFilter
+from django.contrib import messages
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -15,31 +17,35 @@ class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
 
 ##################### CLASS - BASED VIEWS #####################
 
-#Home View - all movies without category filter
+# Home View - all movies without category filter
+
+
 class MoviesView (FilterView):
     model = Movie
     template_name = 'pages/home.html'
     filterset_class = MovieFilter
     paginate_by = 6
- 
+
 # query_set for dajango-filter
     def get_queryset(self):
         qs = self.model.objects.all()
         movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
         return movie_filtered_list.qs.order_by('-date_posted')
 
-#pass new query_set to template to work with promotion zone apart from paginator and search field(django-filter)
+# pass new query_set to template to work with promotion zone apart from paginator and search field(django-filter)
     def get_context_data(self, **kwargs):
         context = super(MoviesView, self).get_context_data(**kwargs)
         context['movie_promotions'] = Movie.objects.all()
         context['submitButton'] = 'Szukaj'
         return context
 
-#Hot-Top View
+# Hot-Top View
+
+
 class HotTopView (FilterView):
     model = Movie
     template_name = 'pages/hot_top.html'
-    filterset_class = MovieFilter 
+    filterset_class = MovieFilter
     paginate_by = 6
 
     # query_set for dajango-filter with category filter
@@ -53,7 +59,9 @@ class HotTopView (FilterView):
         context['submitButton'] = 'Szukaj w Hot-Top'
         return context
 
-#Odkrycia View
+# Odkrycia View
+
+
 class OdkryciaView (FilterView):
     model = Movie
     template_name = 'pages/odkrycia.html'
@@ -64,56 +72,58 @@ class OdkryciaView (FilterView):
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="ODKRYCIA")
         return category_qs.order_by('-date_posted')
-    
+
     # pass a context=label for submit Button that search movies in chosen category
     def get_context_data(self, **kwargs):
         context = super(OdkryciaView, self).get_context_data(**kwargs)
         context['submitButton'] = 'Szukaj w Odkrycia'
         return context
 
-#Beauty View
+# Beauty View
+
+
 class BeautyView (FilterView):
     model = Movie
     template_name = 'pages/beauty.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
+
     # query_set for dajango-filter with category filter
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="BEAUTY")
         return category_qs.order_by('-date_posted')
-    
+
     # pass a context=label for submit Button that search movies in chosen category
     def get_context_data(self, **kwargs):
         context = super(BeautyView, self).get_context_data(**kwargs)
         context['submitButton'] = 'Szukaj w Beauty'
         return context
 
-#Funny View
+# Funny View
 class FunnyView (FilterView):
     model = Movie
     template_name = 'pages/funny.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
+
     # query_set for dajango-filter with category filter
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="ŚMIESZNE")
         return category_qs.order_by('-date_posted')
-    
+
     # pass a context=label for submit Button that search movies in chosen category
     def get_context_data(self, **kwargs):
         context = super(FunnyView, self).get_context_data(**kwargs)
         context['submitButton'] = 'Szukaj w Śmieszne'
         return context
-        
-#Gamming View
+
+# Gamming View
 class GamingView (FilterView):
     model = Movie
     template_name = 'pages/lifestyle.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
+
     # query_set for dajango-filter with category filter
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="LIFESTYLE")
@@ -125,13 +135,13 @@ class GamingView (FilterView):
         context['submitButton'] = 'Szukaj w Gaming'
         return context
 
-#Lifestyle View
+# Lifestyle View
 class LifestyleView (FilterView):
     model = Movie
     template_name = 'pages/lifestyle.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
+
     # query_set for dajango-filter with category filter
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="LIFESTYLE")
@@ -143,14 +153,14 @@ class LifestyleView (FilterView):
         context['submitButton'] = 'Szukaj w Lifestyle'
         return context
 
-#Sport View
+# Sport View
 class SportView (FilterView):
     model = Movie
     template_name = 'pages/sport.html'
     filterset_class = MovieFilter
     paginate_by = 6
-    
-   # query_set for dajango-filter with category filter 
+
+   # query_set for dajango-filter with category filter
     def get_queryset(self):
         category_qs = self.model.objects.filter(category="SPORT")
         return category_qs.order_by('-date_posted')
@@ -163,8 +173,34 @@ class SportView (FilterView):
 
 ##################### FUNCTION VIEWS #####################
 
+
 def contact(request):
+
+    if request.method == 'POST':
+        message_name = request.POST['message-name']
+        message_email = request.POST['message-email']
+        message = request.POST['message']
+
+        if message_name and message_email and message:
+            send_mail(
+                f'Formularz Kontaktowy, wiadomość od {message_name}',
+                f'Wiadomość z formularza kontaktowego INFLUENCIO.PL\n Użytkownik: {message_name}\n Email: {message_email}\n Wiadomość: {message}',
+                message_email,
+                ['influencio.kontakt@gmail.com'],)
+            messages.success(request, f'Dziękujemy za kontakt {message_name}, Twój email został wysłany ! ')
+        else:
+            messages.warning(request, 'Wypełnij wszystkie pola formularza przed wysłaniem !')
+
         context = {
-            
-      }
-        return render (request,'pages/contact.html', context)
+            'message_name': message_name,
+            'message_email': message_email,
+            'message': message,
+        }
+
+        return render(request, 'pages/contact.html', context)
+
+    else:
+        context = {
+        
+    }
+        return render(request, 'pages/contact.html', context)

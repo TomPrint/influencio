@@ -3,80 +3,43 @@
 
 {% block content%}
 
-<!--Section: Contact v.2-->
 <section class="mb-5">
 
-    <!--Section heading-->
     <h2 class="h1-responsive font-weight-bold text-center my-4">Skontaktuj się z nami</h2>
-    <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Masz jakieś pytania? Jesteś zainteresowany współpracą ? Napisz do nas!</p>
+    <p class="text-center w-responsive mx-auto mb-5">Masz jakieś pytania? Jesteś zainteresowany współpracą ? Napisz do
+        nas!</p>
 
     <div class="row">
-
-        <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                <!--Grid row-->
+            <form action="{% url 'page-contact' %}" method='post'>
+                {% csrf_token %}
                 <div class="row">
-
-                    <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Twoje imię</label>
+                            <input type="text" name="message-name" class="form-control mb-30">
+                            <label for="message-name" class="">Twoje imię</label>
                         </div>
                     </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">Twój email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Temat</label>
+                            <input type="email" name="message-email" class="form-control mb-30">
+                            <label for="message-email" class="">Twój email</label>
                         </div>
                     </div>
                 </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Twoja wiadomośćw</label>
-                        </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="md-form">
+                        <textarea name="message" class="form-control md-textarea" rows = "6"></textarea>
+                        <label for="message">Twoja wiadomość</label>
                     </div>
                 </div>
-                <!--Grid row-->
+            </div>
+            <button type="submit" class="btn btn-primary mt-1">Wyślij</button>
 
             </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-info">Wyślij</a>
-            </div>
-            <div class="status"></div>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-md-3 text-center">
             <ul class="list-unstyled mb-0">
                 <li><i class="bi bi-house"></i>
@@ -84,17 +47,12 @@
                 </li>
 
                 <li><i class="bi bi-envelope-open"></i>
-                    <p>influencio@gmail.com</p>
+                    <p>influencio.kontakt@gmail.com</p>
                 </li>
             </ul>
         </div>
-        <!--Grid column-->
-
-    </div>
+    </div>  <!-- row -->
 
 </section>
-<!--Section: Contact v.2-->
-
 
 {% endblock %}
-
