@@ -71,9 +71,9 @@ class MovieAdmin(admin.ModelAdmin):
                 csv_data = file_data.split("\n")
             
                 for x in csv_data:
-                    fields = x.split(",")
+                    fields = x.split("|")
                     if x:    
-                        #example file for uploads movies.txt, comma delimited
+                        #example file for uploads movies.txt, "|"" delimited
                         Movie.objects.update_or_create(
                                 category = fields[0],
                                 source = fields[1],
