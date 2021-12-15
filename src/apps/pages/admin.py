@@ -1,6 +1,7 @@
 from django.contrib import admin, messages
 from django.contrib.admin.decorators import action
 from django.http.response import HttpResponse
+from django.contrib import messages
 from django.urls import path
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -66,28 +67,34 @@ class MovieAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             if request.method == 'POST':
                 csv_file = request.FILES["csv_upload"]
-
                 file_data = csv_file.read().decode('utf-8')
                 csv_data = file_data.split("\n")
-            
-                for x in csv_data:
-                    fields = x.split("|")
-                    if x:    
-                        #example file for uploads movies.txt, "|"" delimited
-                        Movie.objects.update_or_create(
-                                category = fields[0],
-                                source = fields[1],
-                                author = fields[2],
-                                title = fields[3],
-                                content = fields[4],
-                                youtube_url = fields[5],
-                                tiktok_url = fields[6],
-                                insta_url = fields[7],
-                        )               
+                try:
+                    for x in csv_data:
+                        fields = x.split("|")
+                        if x:    
+                        #example file movies_example_upload_file.txt set as "|" delimited in main project directory
+                            Movie.objects.update_or_create(
+                                    category = fields[0],
+                                    source = fields[1],
+                                    author = fields[2],
+                                    title = fields[3],
+                                    content = fields[4],
+                                    youtube_url = fields[5],
+                                    tiktok_url = fields[6],
+                                    insta_url = fields[7],
+                                
+                            )
+                    messages.success(request, f'Dane zostały wgrane do bazy danych!')                                       
+                except Exception:
+                     messages.warning(request, f'Uwaga: Błędne formatowanie zawartości pliku, popraw plik i wgraj ponownie!')
 
             form = ImportCsvForm()
             data = {"form": form}
+            
+            
             return render(request, 'admin/csv_upload.html', data)
+            
         
         else:
             return redirect('page-home')
