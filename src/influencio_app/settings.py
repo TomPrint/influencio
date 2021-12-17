@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'active_link',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,9 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_KEY_2')
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# --- star rating settings ---
+STAR_RATINGS_ANONYMOUS = True
+STAR_RATINGS_RANGE = 3
+STAR_RATINGS_STAR_HEIGHT = 22
+STAR_RATINGS_STAR_WIDTH = 22
