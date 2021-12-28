@@ -1,5 +1,6 @@
 from django.contrib import admin, messages
 from django.contrib.admin.decorators import action
+from django.forms import fields
 from django.http.response import HttpResponse
 from django.contrib import messages
 from django.urls import path
@@ -9,7 +10,9 @@ from django import forms
 from django.utils.translation import ngettext
 
 
+
 from .models import Movie
+from .models import IpModel
 import csv
 
 
@@ -18,13 +21,15 @@ class ImportCsvForm(forms.Form):
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('author','title','category','source','promotion','date_posted')
+    list_display = ('author','title','category','source','promotion','date_posted', 'fire_likes_count')
     #admin filter
     list_filter = ('author', 'title', )
     #admin search
     search_fields = ['author', 'title',]
     #action 
     actions=['make_promotion', 'cancel_promotion',]
+
+
 
     #urls for CSV upload & download
     def get_urls(self):
@@ -122,4 +127,5 @@ class MovieAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(IpModel)
 

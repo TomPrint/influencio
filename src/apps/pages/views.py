@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.pages.models import Movie
+from apps.pages.models import Movie, IpModel
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -204,3 +204,7 @@ def contact(request):
         
     }
         return render(request, 'pages/contact.html', context)
+
+
+    
+    

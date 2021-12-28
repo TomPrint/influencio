@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib import admin
 
 
 category_choices = (
@@ -10,6 +11,12 @@ category_choices = (
 source_choices = (
     ('YouTube', 'YouTube'), ('TikTok', 'TikTok'), ('Instagram','Instagram'), ('Other', 'Other'),)
 # Create your models here.
+
+class IpModel(models.Model):
+    ip = models.CharField(max_length=100, verbose_name = 'IP')
+    def __str__(self):
+        return self.ip
+
 
 class Movie (models.Model):
     category = models.CharField(max_length=50, verbose_name='Kategoria filmu', default= 'unassigned', null=False, choices=category_choices)
@@ -22,6 +29,9 @@ class Movie (models.Model):
     youtube_url = models.URLField(blank=True, max_length=300)
     tiktok_url = models.URLField(blank=True, max_length=300)
     insta_url = models.URLField(blank=True, max_length=300)
+    fire_likes = models.ManyToManyField(IpModel, related_name="fire_likes", blank = True)
+    fire_likes_count = models.IntegerField(default=0)
+
 
 
     class Meta:
@@ -33,6 +43,11 @@ class Movie (models.Model):
 
     def get_absolute_url(self):
         return reverse("_detail", kwargs={"pk": self.pk})
+    
+    #allows sorting column in django admin
+    @admin.display(ordering='fire_likes')
+    def fire_likes_count(self):
+        return self.fire_likes.count()
 
 
 
