@@ -11,14 +11,13 @@ from django.core.mail import send_mail
 # Create your views here.
 
 # Admin Staff Mixin
-class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_superuser or self.request.user.is_staff
+# class AdminStaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+#     def test_func(self):
+#         return self.request.user.is_superuser or self.request.user.is_staff
 
 ##################### CLASS - BASED VIEWS #####################
 
-# Home View - all movies without category filter
-
+# Home View - all movies without category filter and django-filter
 
 class MoviesView (FilterView):
     model = Movie
@@ -39,140 +38,48 @@ class MoviesView (FilterView):
         context['submitButton'] = 'Szukaj'
         return context
 
-# Hot-Top View
+# Hot-Top View - parent is MoviesView
 
-
-class HotTopView (FilterView):
-    model = Movie
-    template_name = 'pages/hot_top.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
+class HotTopView (MoviesView):
+    category = 'HOT-TOP'
     # query_set for dajango-filter with category filter
+    
     def get_queryset(self):
-        category_qs = self.model.objects.filter(category="HOT-TOP")
+        category_qs = self.model.objects.filter(category=self.category)
         return category_qs.order_by('-date_posted')
 
     # pass a context=label for submit Button that search movies in chosen category
     def get_context_data(self, **kwargs):
-        context = super(HotTopView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Hot-Top'
+        context = super(__class__, self).get_context_data(**kwargs)
+        context['submitButton'] = f'Szukaj w {self.category}'
         return context
 
-# Odkrycia View
+# Odkrycia View - prarent is HotTopView
+class OdkryciaView (HotTopView):
+    category = 'ODKRYCIA'
 
+# Beauty View - prarent is HotTopView
+class BeautyView (HotTopView):
+    category = 'BEAUTY'
 
-class OdkryciaView (FilterView):
-    model = Movie
-    template_name = 'pages/odkrycia.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
+# Funny View - prarent is HotTopView
+class FunnyView (HotTopView):
+    category = 'ŚMIESZNE'
 
-    # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="ODKRYCIA")
-        return category_qs.order_by('-date_posted')
+# Gamming View - prarent is HotTopView
+class GamingView (HotTopView):
+    category = 'GAMING'
 
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(OdkryciaView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Odkrycia'
-        return context
+# Lifestyle View - prarent is HotTopView
+class LifestyleView (HotTopView):
+    category = 'LIFESTYLE'
 
-# Beauty View
-
-
-class BeautyView (FilterView):
-    model = Movie
-    template_name = 'pages/beauty.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
-    # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="BEAUTY")
-        return category_qs.order_by('-date_posted')
-
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(BeautyView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Beauty'
-        return context
-
-# Funny View
-class FunnyView (FilterView):
-    model = Movie
-    template_name = 'pages/funny.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
-    # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="ŚMIESZNE")
-        return category_qs.order_by('-date_posted')
-
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(FunnyView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Śmieszne'
-        return context
-
-# Gamming View
-class GamingView (FilterView):
-    model = Movie
-    template_name = 'pages/lifestyle.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
-    # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="LIFESTYLE")
-        return category_qs.order_by('-date_posted')
-
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(GamingView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Gaming'
-        return context
-
-# Lifestyle View
-class LifestyleView (FilterView):
-    model = Movie
-    template_name = 'pages/lifestyle.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
-    # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="LIFESTYLE")
-        return category_qs.order_by('-date_posted')
-
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(LifestyleView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Lifestyle'
-        return context
-
-# Sport View
-class SportView (FilterView):
-    model = Movie
-    template_name = 'pages/sport.html'
-    filterset_class = MovieFilter
-    paginate_by = 6
-
-   # query_set for dajango-filter with category filter
-    def get_queryset(self):
-        category_qs = self.model.objects.filter(category="SPORT")
-        return category_qs.order_by('-date_posted')
-
-    # pass a context=label for submit Button that search movies in chosen category
-    def get_context_data(self, **kwargs):
-        context = super(SportView, self).get_context_data(**kwargs)
-        context['submitButton'] = 'Szukaj w Sport'
-        return context
+# Sport View - prarent is HotTopView
+class SportView (HotTopView):
+    category = 'SPORT'
+   
 
 ##################### FUNCTION VIEWS #####################
-
 
 def contact(request):
 
