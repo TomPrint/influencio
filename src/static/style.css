@@ -150,7 +150,7 @@ section {
     background-image: url('Hot_zone4.png');
     border-radius: 0.5rem;
     background-repeat: repeat space;
-    background-color: #ffc107;
+    background-color: rgb(255, 193, 7);
     -webkit-box-shadow: -2px 2px 40px -7px rgba(126, 126, 126, 1);
     -moz-box-shadow: -2px 2px 40px -7px rgba(126, 126, 126, 1);
     box-shadow: -2px 2px 40px -7px rgba(126, 126, 126, 1);
