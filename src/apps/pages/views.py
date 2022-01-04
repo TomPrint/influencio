@@ -81,6 +81,18 @@ class SportView (HotTopView):
 
 ##################### FUNCTION VIEWS #####################
 
+def privacy(request):
+    context = {
+        'title':'Polityka Prywatności',
+      }
+    return render (request,'pages/privacy.html', context )
+
+def about(request):
+    context = {
+        'title':'O Influencio',
+      }
+    return render (request,'pages/about.html', context )
+
 def contact(request):
 
     if request.method == 'POST':

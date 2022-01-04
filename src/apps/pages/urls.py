@@ -23,5 +23,7 @@ urlpatterns = [
     path('gaming/', GamingView.as_view(), name='page-gaming'),
     path('sport/', SportView.as_view(), name='page-sport'),
     path('kontakt/',  views.contact, name='page-contact'),
+    path('privacy/',  views.privacy, name='page-privacy'),
+    path('about/',  views.about, name='page-about'),
 ]
 

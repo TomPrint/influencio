@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'active_link',
     'star_ratings',
+    'django_simple_cookie_consent',
 ]
 
 MIDDLEWARE = [
