@@ -21,7 +21,7 @@ class ImportCsvForm(forms.Form):
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ('author','title','category','source','promotion','date_posted', 'fire_likes_count')
+    list_display = ('author','title','category','source','promotion','date_posted', 'fire_likes_count',)
     #admin filter
     list_filter = ('author', 'title', )
     #admin search

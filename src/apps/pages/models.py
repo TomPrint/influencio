@@ -29,8 +29,8 @@ class Movie (models.Model):
     youtube_url = models.URLField(blank=True, max_length=300)
     tiktok_url = models.URLField(blank=True, max_length=300)
     insta_url = models.URLField(blank=True, max_length=300)
-    fire_likes = models.ManyToManyField(IpModel, related_name="fire_likes", blank = True)
-    fire_likes_count = models.IntegerField(default=0)
+    fire_likes = models.ManyToManyField(IpModel, related_name="fire_likes", blank=True)
+    fire_likes_count = models.IntegerField(default=0, null=True, blank=True)
 
 
 
