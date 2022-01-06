@@ -15,15 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from influencio_app import settings
+from influencio_app import settings, sitemaps
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import url
+from .sitemaps import StaticViewsSitemap
+from django.contrib.sitemaps.views import sitemap
+from django.conf.urls import url
+from django.http import HttpResponse
+
+
+sitemaps={
+    'sitemap': StaticViewsSitemap
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('', include('apps.pages.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^robots.txt', lambda x: HttpResponse(f"Sitemap: {MYHOST}/sitemap.xml\nUser-Agent: *\nDisallow:", content_type="text/plain"), name="robots_file"),
     
 ]
 

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     #local custom location apps
     'apps.pages',
     'apps.users',
@@ -153,8 +155,11 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-# --- star rating settings ---
+# --- django star rating settings --- optional ---
 STAR_RATINGS_ANONYMOUS = True
 STAR_RATINGS_RANGE = 1
 STAR_RATINGS_STAR_HEIGHT = 22
 STAR_RATINGS_STAR_WIDTH = 22
+
+MYHOST = 'localhost'
+SITE_ID=2

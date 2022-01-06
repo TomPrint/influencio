@@ -12,6 +12,8 @@ source_choices = (
     ('YouTube', 'YouTube'), ('TikTok', 'TikTok'), ('Instagram','Instagram'), ('Other', 'Other'),)
 # Create your models here.
 
+# OPTIONAL IPMODEL CLASS FOR CUSTOM RATING/LIKE BUTTON
+# TO BE DEVELOPED...
 class IpModel(models.Model):
     ip = models.CharField(max_length=100, verbose_name = 'IP')
     def __str__(self):
@@ -23,7 +25,7 @@ class Movie (models.Model):
     source = models.CharField(max_length=50, verbose_name='Źródło filmu', default= 'unassigned', null=False, choices=source_choices)
     promotion = models.BooleanField(default=False, verbose_name='PROMOCJA FILMU')
     author = models.CharField(max_length=50, verbose_name='Nazwa influencera')
-    title = models.CharField(max_length=50, verbose_name='Nazwa filmu')
+    title = models.CharField(max_length=80, verbose_name='Nazwa filmu')
     content = models.TextField(max_length=10000, verbose_name='HTML EMBEDED do filmu')
     date_posted = models.DateTimeField(default=timezone.now)
     youtube_url = models.URLField(blank=True, max_length=300)
@@ -45,6 +47,7 @@ class Movie (models.Model):
         return reverse("_detail", kwargs={"pk": self.pk})
     
     #allows sorting column in django admin
+    #fire likes -> for further development
     @admin.display(ordering='fire_likes')
     def fire_likes_count(self):
         return self.fire_likes.count()
