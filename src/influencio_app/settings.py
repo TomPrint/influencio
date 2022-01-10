@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY_INFLUENCIO')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['influencio.pl','www.influencio.pl', 'localhost', '127.0.0.1','127.0.0.1:8080']
 
 
 # Application definition
@@ -163,3 +163,14 @@ STAR_RATINGS_STAR_WIDTH = 22
 
 MYHOST = 'localhost'
 SITE_ID=2
+
+# DEPLOYMENT settings
+CORS_REPLACE_HTTPS_REFERER      = False
+HOST_SCHEME                     = "http://"
+SECURE_PROXY_SSL_HEADER         = None
+SECURE_SSL_REDIRECT             = False
+SESSION_COOKIE_SECURE           = True
+CSRF_COOKIE_SECURE              = True
+SECURE_HSTS_SECONDS             = False
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
+SECURE_FRAME_DENY               = False
