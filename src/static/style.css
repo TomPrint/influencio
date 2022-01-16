@@ -63,7 +63,7 @@
 
 /* Downsizing Navbar */
 
-@media (max-width: 1320px) {
+@media (max-width: 1385px) {
 
     .color-text {
         font-size: 30px;   
@@ -74,7 +74,7 @@
 }
 
 
-@media (min-width: 1188px){
+@media (min-width: 1203px){
     .navbar-expand-custom {
         flex-direction: row;
         flex-wrap: nowrap;

@@ -37,7 +37,7 @@ urlpatterns = [
     path('', include('apps.pages.urls')),
     path(".well-known/security.txt", security_txt),
     path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^robots.txt', lambda x: HttpResponse(f"Sitemap:{settings.MYHOST}/sitemap.xml\nUser-Agent: *\nDisallow:", content_type="text/plain"), name="robots_file"),
+    url(r'^robots.txt', lambda x: HttpResponse("Sitemap: https://www.influencio.pl/sitemap.xml\nUser-Agent: *\nDisallow:", content_type="text/plain"), name="robots_file"),
     
 ]
 
