@@ -24,6 +24,8 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf.urls import url
 from django.http import HttpResponse
 from .views import security_txt
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 
 sitemaps={
@@ -38,6 +40,7 @@ urlpatterns = [
     path(".well-known/security.txt", security_txt),
     path('sitemap.xml', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^robots.txt', lambda x: HttpResponse("Sitemap: https://www.influencio.pl/sitemap.xml\nUser-Agent: *\nDisallow:", content_type="text/plain"), name="robots_file"),
+    path("favicon.ico", RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),name="favicon"),
     
 ]
 
