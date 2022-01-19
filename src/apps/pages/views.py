@@ -111,7 +111,7 @@ def contact(request):
                 f'Formularz Kontaktowy, wiadomość od {message_name}',
                 f'Wiadomość z formularza kontaktowego INFLUENCIO.PL\n Użytkownik: {message_name}\n Email: {message_email}\n Wiadomość: {message}',
                 message_email,
-                ['influencio.kontakt@gmail.com'],)
+                ['kontakt.influencio@gmail.com'],)
             messages.success(request, f'Dziękujemy za kontakt {message_name}, Twój email został wysłany ! ')
         else:
             messages.warning(request, 'Wypełnij wszystkie pola formularza przed wysłaniem !')
