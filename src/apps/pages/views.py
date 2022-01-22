@@ -38,7 +38,7 @@ class MoviesView (FilterView):
         context = super(MoviesView, self).get_context_data(**kwargs)
         context['movie_promotions'] = Movie.objects.all()
         context['submitButton'] = 'Szukaj'
-        context['title'] = '| Strona Główna'
+        context['title'] = ' Strona Główna'
         return context
 
 # Hot-Top View - parent is MoviesView
@@ -56,7 +56,7 @@ class HotTopView (MoviesView):
     def get_context_data(self, **kwargs):
         context = super(__class__, self).get_context_data(**kwargs)
         context['submitButton'] = f'Szukaj w {self.category}'
-        context['title'] = f'| {self.category}'
+        context['title'] = f' {self.category}'
         return context
 
 # Odkrycia View - prarent is HotTopView
@@ -90,7 +90,7 @@ class SportView (HotTopView):
 
 def privacy(request):
     context = {
-        'title':'| Polityka Prywatności',
+        'title':' Polityka Prywatności',
       }
     return render (request,'pages/privacy.html', context )
 
@@ -98,7 +98,7 @@ def privacy(request):
 
 def about(request):
     context = {
-        'title':'| O Influencio',
+        'title':' O Influencio',
       }
     return render (request,'pages/about.html', context )
 
@@ -125,14 +125,14 @@ def contact(request):
             'message_name': message_name,
             'message_email': message_email,
             'message': message,
-            'title':'| Kontakt',
+            'title':' Kontakt',
         }
 
         return render(request, 'pages/contact.html', context)
 
     else:
         context = {
-        'title':'| Kontakt',
+        'title':' Kontakt',
     }
         return render(request, 'pages/contact.html', context)
 
