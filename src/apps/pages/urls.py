@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 from .views import (
     LifestyleView, 
-    MoviesView, 
+    MoviesView,
+    MixView, 
     HotTopView, 
     OdkryciaView, 
     BeautyView, 
@@ -16,6 +17,7 @@ from .views import (
 urlpatterns = [
     path('', MoviesView.as_view(), name='page-home'),
     path('hot-top/', HotTopView.as_view(), name='page-hot_top'),
+    path('mix/', MixView.as_view(), name='page-mix'),
     path('odkrycia/', OdkryciaView.as_view(), name='page-odkrycia'),
     path('beauty/', BeautyView.as_view(), name='page-beauty'),
     path('funny/', FunnyView.as_view(), name='page-funny'),

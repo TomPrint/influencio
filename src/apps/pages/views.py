@@ -59,6 +59,15 @@ class HotTopView (MoviesView):
         context['title'] = f' {self.category}'
         return context
 
+# Mix View - prarent is HotTopView
+class MixView (MoviesView):
+    template_name = 'pages/mix.html'
+
+    def get_queryset(self):
+        qs = self.model.objects.all()
+        movie_filtered_list = MovieFilter(self.request.GET, queryset=qs)
+        return movie_filtered_list.qs.order_by('?') # Question mark gives us random results #
+
 # Odkrycia View - prarent is HotTopView
 class OdkryciaView (HotTopView):
     category = 'ODKRYCIA'
