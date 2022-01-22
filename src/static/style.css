@@ -242,14 +242,10 @@ iframe {
 
 /* optional search icon */
 
-/* .bx-search {
+.bx-search {
     color: rgb(214, 218, 9);
 }
 
-@media (max-width: 1250px){
-    .bx-search {
-        display:none; 
-} */
 
 
 /* ----- FOOTER ----- */
