@@ -43,8 +43,8 @@ class MoviesView (FilterView):
 
 # Hot-Top View - parent is MoviesView
 
-class HotTopView (MoviesView):
-    category = 'HOT-TOP'
+class TravelView (MoviesView):
+    category = 'TRAVEL'
 
     # query_set for dajango-filter with category filter
     
@@ -69,29 +69,32 @@ class MixView (MoviesView):
         return movie_filtered_list.qs.order_by('?') # Question mark gives us random results #
 
 # Odkrycia View - prarent is HotTopView
-class OdkryciaView (HotTopView):
+class OdkryciaView (TravelView):
     category = 'ODKRYCIA'
 
 # Beauty View - prarent is HotTopView
-class BeautyView (HotTopView):
+class BeautyView (TravelView):
     category = 'BEAUTY'
 
 # Funny View - prarent is HotTopView
-class FunnyView (HotTopView):
+class FunnyView (TravelView):
     category = 'ŚMIESZNE'
 
 # Gamming View - prarent is HotTopView
-class GamingView (HotTopView):
+class GamingView (TravelView):
     category = 'GAMING'
 
 # Lifestyle View - prarent is HotTopView
-class LifestyleView (HotTopView):
+class LifestyleView (TravelView):
     category = 'LIFESTYLE'
 
 # Sport View - prarent is HotTopView
-class SportView (HotTopView):
+class SportView (TravelView):
     category = 'SPORT'
-   
+
+# Sport View - prarent is HotTopView
+class SztukaView (TravelView):
+    category = 'SZTUKA'
 
 ##################### FUNCTION VIEWS #####################
 

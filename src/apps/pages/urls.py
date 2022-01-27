@@ -3,22 +3,22 @@ from . import views
 from .views import (
     LifestyleView, 
     MoviesView,
-    MixView, 
-    HotTopView, 
-    OdkryciaView, 
+    MixView,  
     BeautyView, 
     FunnyView, 
     LifestyleView, 
     GamingView, 
     SportView,
+    TravelView,
+    SztukaView,
     )
 
 
 urlpatterns = [
     path('', MoviesView.as_view(), name='page-home'),
-    path('hot-top/', HotTopView.as_view(), name='page-hot_top'),
+    path('travel/', TravelView.as_view(), name='page-travel'),
     path('mix/', MixView.as_view(), name='page-mix'),
-    path('odkrycia/', OdkryciaView.as_view(), name='page-odkrycia'),
+    path('sztuka/', SztukaView.as_view(), name='page-sztuka'),
     path('beauty/', BeautyView.as_view(), name='page-beauty'),
     path('funny/', FunnyView.as_view(), name='page-funny'),
     path('lifestyle/', LifestyleView.as_view(), name='page-lifestyle'),
