@@ -4,7 +4,7 @@
         <h5 class="card-subtitle">{{ movie_promotion.title }}</h5>
         <br>
         <h6 class="card-subtitle mb-2 text-muted">Kategoria: {{ movie_promotion.category }}</h6>
-        <h6 class="card-subtitle mb-2 text-muted"><small>Data dodania: {{ movie_promotion.date_posted }}</small></h6>
+        <h6 class="card-subtitle mb-2 text-muted"><small>Dodane do Influencio: {{ movie.date_posted|date:"M d, Y" }}</small></h6>
         <div class="movie_container">
             <div class="movie_item">{{movie_promotion.content | safe }}</div>
         </div>
