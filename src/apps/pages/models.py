@@ -5,8 +5,8 @@ from django.contrib import admin
 
 
 category_choices = (
-    ('HOT-TOP', 'HOT-TOP'), ('ODKRYCIA', 'ODKRYCIA'), ('BEAUTY','BEAUTY'), ('ŚMIESZNE', 'ŚMIESZNE'),
-    ('GAMING', 'GAMING'), ('LIFESTYLE', 'LIFESTYLE'), ('SZTUKA', 'SZTUKA'), ('SPORT','SPORT'),)
+    ('TRAVEL', 'TRAVEL'), ('SZTUKA', 'SZTUKA'), ('BEAUTY','BEAUTY'), ('ŚMIESZNE', 'ŚMIESZNE'),
+    ('GAMING', 'GAMING'), ('LIFESTYLE', 'LIFESTYLE'), ('SPORT','SPORT'),)
 
 source_choices = (
     ('YouTube', 'YouTube'), ('TikTok', 'TikTok'), ('Instagram','Instagram'), ('Other', 'Other'),)

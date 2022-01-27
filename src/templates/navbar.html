@@ -13,28 +13,38 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                         <li class="nav-item {% active_link 'page-mix' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-mix' %}">MIX</a></li>
-
-                        <li class="nav-item {% active_link 'page-hot_top' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-hot_top' %}">HOT-TOP</a></li>
-                        <li class="nav-item {% active_link 'page-odkrycia' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-odkrycia' %}">ODKRYCIA</a></li>
-
+                                href="{% url 'page-mix' %}">CLICK&MIX</a></li>
+                        
                         <li class="nav-item {% active_link 'page-beauty' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-beauty' %}"> BEAUTY </a></li>
+                                href="{% url 'page-beauty' %}"> BEAUTY </a></li>
+                        
+                        <li class="nav-item {% active_link 'page-lifestyle' 'navbar-active' %}"><a class="nav-link"
+                                href="{% url 'page-lifestyle' %}">LIFESTYLE</a></li>
+                        
+                        <li class="nav-item {% active_link 'page-sport' 'navbar-active' %}"><a class="nav-link"
+                                href="{% url 'page-sport' %}">SPORT</a></li>
 
                         <li class="nav-item {% active_link 'page-funny' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-funny' %}">ŚMIESZNE</a></li>
+                                href="{% url 'page-funny' %}">ŚMIESZNE</a></li>
 
                         <li class="nav-item {% active_link 'page-gaming' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-gaming' %}">GAMING</a></li>
+                                href="{% url 'page-gaming' %}">GAMING</a></li>
 
-                        <li class="nav-item {% active_link 'page-lifestyle' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-lifestyle' %}">LIFESTYLE</a>
-                        </li>
+                        <li class="nav-item {% active_link 'page-travel' 'navbar-active' %}"><a class="nav-link"
+                                        href="{% url 'page-travel' %}">TRAVEL</a></li>
 
-                        <li class="nav-item {% active_link 'page-sport' 'navbar-active' %}"><a class="nav-link"
-                                        href="{% url 'page-sport' %}">SPORT</a></li>
+                        <li class="nav-item {% active_link 'page-sztuka' 'navbar-active' %}"><a class="nav-link"
+                                        href="{% url 'page-sztuka' %}">SZTUKA</a></li>
+
+                        
+
+                       
+
+                        
+
+                        
+
+                       
                         <li class = "nav-item searchbar">
                         {% comment %} Statment turns off filter form for views like contact, privacy, etc, about... {% endcomment %}
                         {% if filter.form %}
