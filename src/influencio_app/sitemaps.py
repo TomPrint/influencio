@@ -12,8 +12,8 @@ class StaticViewsSitemap(sitemaps.Sitemap):
 
         return [
             'page-home', 
-            'page-hot_top', 
-            'page-odkrycia', 
+            'page-travel', 
+            'page-sztuka', 
             'page-beauty', 
             'page-funny', 
             'page-lifestyle', 
