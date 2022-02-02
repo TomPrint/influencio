@@ -13,22 +13,22 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                         <li class="nav-item {% active_link 'page-mix' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-mix' %}">CLICK&MIX</a></li>
-                        
+                                        href="{% url 'page-mix' %}">CLICK&MIX</a></li>
+
                         <li class="nav-item {% active_link 'page-beauty' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-beauty' %}"> BEAUTY </a></li>
-                        
+                                        href="{% url 'page-beauty' %}"> BEAUTY </a></li>
+
                         <li class="nav-item {% active_link 'page-lifestyle' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-lifestyle' %}">LIFESTYLE</a></li>
-                        
+                                        href="{% url 'page-lifestyle' %}">LIFESTYLE</a></li>
+
                         <li class="nav-item {% active_link 'page-sport' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-sport' %}">SPORT</a></li>
+                                        href="{% url 'page-sport' %}">SPORT</a></li>
 
                         <li class="nav-item {% active_link 'page-funny' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-funny' %}">ŚMIESZNE</a></li>
+                                        href="{% url 'page-funny' %}">ŚMIESZNE</a></li>
 
                         <li class="nav-item {% active_link 'page-gaming' 'navbar-active' %}"><a class="nav-link"
-                                href="{% url 'page-gaming' %}">GAMING</a></li>
+                                        href="{% url 'page-gaming' %}">GAMING</a></li>
 
                         <li class="nav-item {% active_link 'page-travel' 'navbar-active' %}"><a class="nav-link"
                                         href="{% url 'page-travel' %}">TRAVEL</a></li>
@@ -36,30 +36,32 @@
                         <li class="nav-item {% active_link 'page-sztuka' 'navbar-active' %}"><a class="nav-link"
                                         href="{% url 'page-sztuka' %}">SZTUKA</a></li>
 
-                        
 
-                       
 
-                        
 
-                        
 
-                       
-                        <li class = "nav-item searchbar">
-                        {% comment %} Statment turns off filter form for views like contact, privacy, etc, about... {% endcomment %}
-                        {% if filter.form %}
+
+
+
+
+
+                        <li class="nav-item searchbar">
+                                {% comment %} Statment turns off filter form for views like contact, privacy, etc,
+                                about... {% endcomment %}
+                                {% if filter.form %}
                                 <form id="searchForm" class="form-inline m-1" action="" method="get" autocomplete="off">
                                         <!-- optional search icon! -->
-                                        <i class="bx bx-search m-1"></i> 
+                                        <i class="bx bx-search m-1"></i>
                                         {{ filter.form|crispy }}
-                                        <button class="btn btn-info btn-sm m-1" type="submit" active="False">{{submitButton}}</button>
-                                        
+                                        <button class="btn btn-info btn-sm m-1" type="submit"
+                                                active="False">{{submitButton}}</button>
+
                                         <!-- <a  class="btn btn-warning btn-sm m-1" href="{% url 'page-home' %}">Wyczyść</a> -->
                                 </form>
-                        {% endif %}
+                                {% endif %}
                         </li>
                 </ul>
-                
+
         </div>
 </nav>
 
