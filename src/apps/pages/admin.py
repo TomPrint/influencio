@@ -44,13 +44,13 @@ class MovieAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
 
             response = HttpResponse(content_type='text/csv')
-            writer = csv.writer(response, delimiter='|')
+            writer = csv.writer(response, delimiter='|', quotechar=None)
             writer.writerow (['Category', 'Source ','Promotion', 'Author', 'Title', 'Content', 'Date Posted', 'Youtube URL', 'Tiktok URL', 'Insta URL'])
 
             for movie in Movie.objects.all().values_list('category', 'source','promotion', 'author', 'title', 'content', 'date_posted', 'youtube_url', 'tiktok_url', 'insta_url'):
                 writer.writerow(movie)
         
-            response['Content-Disposition'] = 'attachement; filename="movies.csv"'
+            response['Content-Disposition'] = 'attachement; filename="movies.txt"'
       
             return response
         else:
@@ -80,12 +80,14 @@ class MovieAdmin(admin.ModelAdmin):
                             Movie.objects.update_or_create(
                                     category = fields[0],
                                     source = fields[1],
-                                    author = fields[2],
-                                    title = fields[3],
-                                    content = fields[4],
-                                    youtube_url = fields[5],
-                                    tiktok_url = fields[6],
-                                    insta_url = fields[7],
+                                    promotion = fields[2],
+                                    author = fields[3],
+                                    title = fields[4],
+                                    content = fields[5],
+                                    date_posted=fields[6],
+                                    youtube_url = fields[7],
+                                    tiktok_url = fields[8],
+                                    insta_url = fields[9],
                                 
                             )
                     messages.success(request, f'Dane zostały wgrane do bazy danych!')                                       
