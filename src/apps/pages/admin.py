@@ -44,10 +44,10 @@ class MovieAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
 
             response = HttpResponse(content_type='text/csv')
-            writer = csv.writer(response, delimiter='|', quotechar=None)
+            writer = csv.writer(response, quoting=csv.QUOTE_NONE, delimiter='|', quotechar='',escapechar='\\')
             writer.writerow (['Category', 'Source ','Promotion', 'Author', 'Title', 'Content', 'Date Posted', 'Youtube URL', 'Tiktok URL', 'Insta URL'])
 
-            for movie in Movie.objects.all().values_list('category', 'source','promotion', 'author', 'title', 'content', 'date_posted', 'youtube_url', 'tiktok_url', 'insta_url'):
+            for movie in Movie.objects.all().values_list('category', 'source', 'promotion', 'author', 'title', 'content', 'date_posted', 'youtube_url', 'tiktok_url', 'insta_url'):
                 writer.writerow(movie)
         
             response['Content-Disposition'] = 'attachement; filename="movies.txt"'
