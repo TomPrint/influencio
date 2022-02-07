@@ -11,6 +11,7 @@ from .views import (
     SportView,
     TravelView,
     SztukaView,
+    CreatorsView,
     )
 
 
@@ -24,6 +25,7 @@ urlpatterns = [
     path('lifestyle/', LifestyleView.as_view(), name='page-lifestyle'),
     path('gaming/', GamingView.as_view(), name='page-gaming'),
     path('sport/', SportView.as_view(), name='page-sport'),
+    path('creators/', CreatorsView.as_view(), name='page-creators'),
     path('kontakt/',  views.contact, name='page-contact'),
     path('privacy/',  views.privacy, name='page-privacy'),
     path('about/',  views.about, name='page-about'),

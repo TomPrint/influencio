@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h4 class="title text-center">{{title}}:</h4>
+<div class="container">
+    <div class="card text-center border-muted ">
+        <div class="card-body">
+            <h6 class="card-title"></h6>
+            <p class="card-text-sm text-justify">
+                {% for object in object_list %}
+            <p> {{ object.author }} </p>
+            {% endfor %}
+
+            </p>
+        </div </div>
+
+        {% endblock %}

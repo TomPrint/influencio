@@ -96,6 +96,23 @@ class SportView (TravelView):
 class SztukaView (TravelView):
     category = 'SZTUKA'
 
+class CreatorsView (ListView):
+    model = Movie
+    template_name = 'pages/creators.html'
+    queryset = Movie.objects.values('author').distinct()
+    ordering = ["author"]
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = ' Lista Twórców'
+        return context
+
+
+
+
+    
+
 ##################### FUNCTION VIEWS #####################
 
 #privacy view
