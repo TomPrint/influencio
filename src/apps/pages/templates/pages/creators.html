@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load active_link_tags %}
 <br>
 <h4 class="title text-center">{{title}}:</h4>
 <div class="container">
@@ -8,10 +9,12 @@
             <h6 class="card-title"></h6>
             <p class="card-text-sm text-justify">
                 {% for object in object_list %}
-            <p> {{ object.author }} </p>
+
+            <p><a href="/?author={{object.author}}">{{object.author}}</a></p>
+
             {% endfor %}
 
             </p>
-        </div </div>
+        </div>
 
         {% endblock %}
