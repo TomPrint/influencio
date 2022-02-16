@@ -11,16 +11,13 @@
         </div>
         <p class="card-text" style="fluid:center;"> Link do profilu:
             {% if movie.tiktok_url|length > 0  %}
-            <a href="{{ movie.tiktok_url }}"><img src='/static/tik-tok-logo.png' alt="Tik-Tok logo" width="40"
-                    height="40"></a>
+            <a href="{{ movie.tiktok_url }}"><i class="bi bi-tiktok"></i></a>
             {% endif %}
             {% if movie.youtube_url|length > 0 %}
-            <a href="{{ movie.youtube_url }}"> <img src='/static/youtube-logo.png' alt="You Tube logo" width="40"
-                    height="40"></a>
+            <a href="{{ movie.youtube_url }}"><i class="bi bi-youtube"></i></a>
             {% endif %}
             {% if movie.insta_url|length > 0 %}
-            <a href="{{ movie.insta_url }}"><img src='/static/instagram-logo.png' alt="Instagram logo" width="40"
-                    height="40"></a>
+            <a href="{{ movie.insta_url }}"><i class="bi bi-instagram"></i></a>
             {% endif %}
             {% ratings movie %}
         </p>
