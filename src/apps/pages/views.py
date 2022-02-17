@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from apps.pages.models import Movie, IpModel
+from .models import Post
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -96,6 +97,7 @@ class SportView (TravelView):
 class SztukaView (TravelView):
     category = 'SZTUKA'
 
+#Creators List View - Lista Twórców
 class CreatorsView (ListView):
     model = Movie
     template_name = 'pages/creators.html'
@@ -109,8 +111,16 @@ class CreatorsView (ListView):
         return context
 
 
+#Articles View
+class ArticlesListView(ListView):
+    model = Post
+    template_name = 'pages/articles.html'
+    queryset = Post.objects.all()
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = ' Artykuły'
+        return context
     
 
 ##################### FUNCTION VIEWS #####################
@@ -166,5 +176,3 @@ def contact(request):
         return render(request, 'pages/contact.html', context)
 
 
-    
-    

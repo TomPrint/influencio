@@ -13,6 +13,8 @@ from .models import Movie
 from .models import IpModel
 import csv
 
+from .models import Post
+
 
 class ImportCsvForm(forms.Form):
     csv_upload = forms.FileField()
@@ -128,4 +130,5 @@ class MovieAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(IpModel)
+admin.site.register(Post)
 

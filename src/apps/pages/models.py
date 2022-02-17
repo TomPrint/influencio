@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 
 category_choices = (
@@ -20,6 +21,7 @@ class IpModel(models.Model):
         return self.ip
 
 
+#MOVIES CLASS
 class Movie (models.Model):
     category = models.CharField(max_length=50, verbose_name='Kategoria filmu', default= 'unassigned', null=False, choices=category_choices)
     source = models.CharField(max_length=50, verbose_name='Źródło filmu', default= 'unassigned', null=False, choices=source_choices)
@@ -52,5 +54,22 @@ class Movie (models.Model):
     def fire_likes_count(self):
         return self.fire_likes.count()
 
+
+#ARTICLES POST CLASS
+class Post(models.Model):
+    title =models.CharField(max_length=100)
+    content = models.TextField()
+    date_posted = models.DateTimeField(default=timezone.now)
+    updated_on = models.DateTimeField(auto_now= True)
+    author = models.ForeignKey(User, on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
+    
+    class Meta:
+        ordering = ['-date_posted']
 
 
