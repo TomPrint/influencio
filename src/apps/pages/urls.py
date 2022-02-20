@@ -12,6 +12,7 @@ from .views import (
     TravelView,
     SztukaView,
     CreatorsView,
+    ArticlesListView,
     )
 
 
@@ -29,5 +30,6 @@ urlpatterns = [
     path('kontakt/',  views.contact, name='page-contact'),
     path('privacy/',  views.privacy, name='page-privacy'),
     path('about/',  views.about, name='page-about'),
+    path('articles/', ArticlesListView.as_view(), name='page-articles'),
 ]
 

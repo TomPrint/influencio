@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
-<h1> hello</h1>
-
 {% block content %}
+<h4 class="title text-center">{{title}}:</h4>
+<div class="container">
+    <div class="card text-center border-muted ">
+        <div class="card-body">
+            <h6 class="card-title"></h6>
+            <p class="card-text-sm text-justify">
+                {% for object in object_list %}
+                <h2> {{object.title}} </h2>
+                {{object.content | safe }}
+                {{object.date_posted}}
+                {% endfor %}
+
 {% endblock %}
