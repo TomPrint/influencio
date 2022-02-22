@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
 <h4 class="title text-center">{{title}}:</h4>
 <div class="container">
-    <div class="card text-center border-muted ">
+    <div class="card text-center border-muted">
         <div class="card-body">
             <h6 class="card-title"></h6>
             <p class="card-text-sm text-justify">
-                {% for object in object_list %}
-                <h2> {{object.title}} </h2>
-                {{object.content | safe }}
-                {{object.date_posted}}
+                {% for post in posts %}
+                {% if post.image %}
+  
+                <img src="{{post.image.url}}" alt="zdjęcie-blog" class="card center border-muted">
+                {% endif %}
+               
+                <h2> {{post.title}} </h2>
+                <p>{{post.content | safe }}</p>
+                <p><em>{{ post.date_posted| date:"F d, Y" }}</em></h7>
                 {% endfor %}
 
 {% endblock %}

@@ -10,10 +10,9 @@ from django import forms
 from django.utils.translation import ngettext
 
 from .models import Movie
+from .models import Post
 from .models import IpModel
 import csv
-
-from .models import Post
 
 
 class ImportCsvForm(forms.Form):
@@ -126,9 +125,13 @@ class MovieAdmin(admin.ModelAdmin):
             updated,
         ) % updated, messages.SUCCESS)
 
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title','date_posted',)
+    search_fields = ['title', 'date_posted',]
+
 
 # Register your models here.
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(IpModel)
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 
