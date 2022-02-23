@@ -22,6 +22,9 @@ class StaticViewsSitemap(sitemaps.Sitemap):
             'page-contact', 
             'page-privacy',
             'page-about',
+            'page-about',
+            'page-creators',
+            'page-articles',
             ]
 
     def location(self, item):
