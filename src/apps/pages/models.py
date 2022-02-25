@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 
 
+
+
 category_choices = (
     ('TRAVEL', 'TRAVEL'), ('SZTUKA', 'SZTUKA'), ('BEAUTY','BEAUTY'), ('ŚMIESZNE', 'ŚMIESZNE'),
     ('GAMING', 'GAMING'), ('LIFESTYLE', 'LIFESTYLE'), ('SPORT','SPORT'),)
@@ -55,11 +57,13 @@ class Movie (models.Model):
         return self.fire_likes.count()
 
 
+
 #ARTICLES POST CLASS
 class Post(models.Model):
     title =models.CharField(max_length=100)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='article_pics', null=True, blank=True)
     updated_on = models.DateTimeField(auto_now= True)
     author = models.ForeignKey(User, on_delete= models.CASCADE)
 

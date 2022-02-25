@@ -115,6 +115,7 @@ class CreatorsView (ListView):
 class ArticlesListView(ListView):
     model = Post
     template_name = 'pages/articles.html'
+    context_object_name = 'posts'
     queryset = Post.objects.all()
 
     def get_context_data(self, **kwargs):
