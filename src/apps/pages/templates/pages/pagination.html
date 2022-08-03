@@ -1,18 +1,20 @@
+{% load poll_extras %}
+
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
-        <a href="?page=1">Pierwsza</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Poprzednia</a>
+            <a href="?page=1">&laquo; Pierwsza</a>
+            <a href="?{{ request.GET|remove_obsolete_pages }}&page={{ page_obj.previous_page_number }}">Poprzednia</a>
         {% endif %}
 
         <span class="current">
-            Strona {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
         </span>
 
         {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Następna</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Ostatnia</a>
-
+            <!-- https://stackoverflow.com/questions/52007038/pagination-using-listview-and-a-dynamic-filtered-queryset -->
+            <a href="?{{ request.GET|remove_obsolete_pages }}&page={{ page_obj.next_page_number }}">Następna</a>
+            <a href="?{{ request.GET|remove_obsolete_pages }}&page={{ page_obj.paginator.num_pages }}">Ostatnia &raquo;</a>
         {% endif %}
     </span>
 </div>
