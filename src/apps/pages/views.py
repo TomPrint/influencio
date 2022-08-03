@@ -20,6 +20,7 @@ from django.core.mail import send_mail
 
 # Home View - all movies without category filter and django-filter
 
+
 class MoviesView (FilterView):
     model = Movie
     template_name = 'pages/home.html'
