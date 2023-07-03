@@ -38,6 +38,13 @@
     color: whitesmoke;
 }
 
+.logo-style {
+    font-family: 'Pacifico', cursive;
+    font-weight: 300;
+    font-size: 35px;
+    color: rgb(209, 60, 34);
+}
+
 .navbar-custom {
     background-color: #3fbd78;
 }

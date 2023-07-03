@@ -7,7 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .filters import MovieFilter
 from django.contrib import messages
 from django.core.mail import send_mail
-
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ from django.core.mail import send_mail
 
 # Home View - all movies without category filter and django-filter
 
-
+@method_decorator(cache_page(60 * 5), name='dispatch')
 class MoviesView (FilterView):
     model = Movie
     template_name = 'pages/home.html'
